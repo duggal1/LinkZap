@@ -13,6 +13,7 @@ export async function seed() {
 
   try {
     // Create test users with proper typing
+    //testing non-real users
     const testUsers = [
       {
         id: randomUUID(),
