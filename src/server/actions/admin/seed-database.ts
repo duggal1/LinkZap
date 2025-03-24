@@ -47,8 +47,9 @@ export async function seedDatabase(): Promise<ApiResponse<null>> {
     }
 
     // Revalidate all pages that might display the seeded data
-    revalidatePath("/");
-    revalidatePath("/dashboard");
+    revalidatePath("/admin");
+    revalidatePath("/admin/users");
+    revalidatePath("/admin/urls");
 
     return {
       success: true,

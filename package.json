@@ -10,7 +10,9 @@
     "db:reset": "tsx scripts/reset-db.ts",
     "db:seed": "tsx scripts/seed-db.ts",
     "db:setup": "tsx scripts/setup-db.ts",
-    "reset-db": "tsx src/server/db/reset-db.ts"
+    "reset-db": "tsx src/server/db/reset-db.ts",
+    "seed": "NODE_ENV=development tsx src/server/db/seed.ts",
+    "seed:prod": "NODE_ENV=production tsx src/server/db/seed.ts"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.8.0",

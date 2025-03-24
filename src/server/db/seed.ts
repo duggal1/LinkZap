@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { db } from "./index";
-import { user, urls, userRoleEnum } from "./schema";
+import { user, urls, userRoleEnum, account } from "./schema";
 import { nanoid } from "nanoid";
 import { randomUUID } from "crypto";
 import { hash } from "bcryptjs";
@@ -11,14 +12,15 @@ export async function seed() {
   console.log("🌱 Seeding database...");
 
   try {
-    // Create test users
+    // Create test users with proper typing
     const testUsers = [
       {
         id: randomUUID(),
         name: "Test User",
         email: "test@example.com",
         password: await hash("password123", 10),
-        role: userRoleEnum.enumValues[0], // "user"
+        role: "user" as const,
+        emailVerified: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -27,7 +29,8 @@ export async function seed() {
         name: "Demo User",
         email: "demo@example.com",
         password: await hash("demo123", 10),
-        role: userRoleEnum.enumValues[0], // "user"
+        role: "user" as const,
+        emailVerified: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -36,7 +39,8 @@ export async function seed() {
         name: "Admin User",
         email: "admin@example.com",
         password: await hash("admin123", 10),
-        role: userRoleEnum.enumValues[1], // "admin"
+        role: "admin" as const,
+        emailVerified: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -44,11 +48,25 @@ export async function seed() {
 
     console.log("👤 Creating test users...");
 
-    // Insert users one by one to handle potential duplicates
+    // Insert users and create OAuth accounts for them
     for (const userData of testUsers) {
       try {
         await db.insert(user).values(userData).onConflictDoNothing();
         console.log(`✅ Created user: ${userData.email} (${userData.role})`);
+
+        // Create mock OAuth accounts for each user
+        const mockGithubAccount = {
+          userId: userData.id,
+          type: "oauth" as const,
+          provider: "github",
+          providerAccountId: `github-${userData.id}`,
+          access_token: "mock-access-token",
+          token_type: "bearer",
+          scope: "read:user user:email",
+        };
+
+        await db.insert(account).values(mockGithubAccount).onConflictDoNothing();
+        console.log(`✅ Created GitHub account for: ${userData.email}`);
       } catch (error) {
         console.error(`❌ Error creating user ${userData.email}:`, error);
       }
