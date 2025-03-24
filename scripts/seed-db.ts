@@ -2,18 +2,20 @@ import { seed } from "../src/server/db/seed";
 
 async function main() {
   console.log("Starting database seeding...");
-  const result = await seed();
   
-  if (result.success) {
-    console.log("Database seeding completed successfully");
-    process.exit(0);
-  } else {
-    console.error("Database seeding failed:", result.error);
+  try {
+    const result = await seed();
+    if (result.success) {
+      console.log("✅ Database seeded successfully!");
+      process.exit(0);
+    } else {
+      console.error("❌ Failed to seed database:", result.error);
+      process.exit(1);
+    }
+  } catch (error) {
+    console.error("❌ Error seeding database:", error);
     process.exit(1);
   }
 }
 
-main().catch((error) => {
-  console.error("Uncaught error:", error);
-  process.exit(1);
-});
+main();
