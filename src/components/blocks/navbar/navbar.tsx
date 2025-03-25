@@ -19,7 +19,17 @@ import AnimationContainer from "./nav-con";
 import { NAV_LINKS } from "./nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { LineChart, Line, ResponsiveContainer } from "recharts";
 
+const data = [
+    { value: 10 },
+    { value: 15 },
+    { value: 13 },
+    { value: 17 },
+    { value: 20 },
+    { value: 25 },
+    { value: 30 },
+];
 
 const Navbar = () => {
 
@@ -82,12 +92,25 @@ const Navbar = () => {
                                                                     <NavigationMenuLink asChild className="z-20 relative">
                                                                         <Link
                                                                             href="/"
-                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-4 no-underline outline-none focus:shadow-md"
+                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-4 no-underline outline-none focus:shadow-md relative overflow-hidden"
                                                                         >
-                                                                            <h6 className="mb-2 mt-4 text-lg font-medium">
+                                                                            <div className="absolute top-0 right-0 w-full h-32 opacity-20">
+                                                                                <ResponsiveContainer width="100%" height="100%">
+                                                                                    <LineChart data={data}>
+                                                                                        <Line
+                                                                                            type="monotone"
+                                                                                            dataKey="value"
+                                                                                            stroke="#f97316"
+                                                                                            strokeWidth={2}
+                                                                                            dot={false}
+                                                                                        />
+                                                                                    </LineChart>
+                                                                                </ResponsiveContainer>
+                                                                            </div>
+                                                                            <h6 className="mb-2 mt-4 text-lg font-medium relative z-10">
                                                                                 All Features
                                                                             </h6>
-                                                                            <p className="text-sm leading-tight text-muted-foreground">
+                                                                            <p className="text-sm leading-tight text-muted-foreground relative z-10">
                                                                                 Manage links, track performance, and more.
                                                                             </p>
                                                                         </Link>
