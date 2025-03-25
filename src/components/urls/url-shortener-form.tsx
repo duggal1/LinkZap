@@ -136,6 +136,11 @@ export function UrlShortenerForm() {
                         placeholder="Paste your long URL here"
                         {...field}
                         disabled={false}
+                        className={`transition-all duration-700 ${
+                          isLoading
+                            ? "shadow-[0_8px_40px_rgba(232,86,7,0.77),0_-8px_40px_rgba(127,211,10,0.756)] animate-[glow_4s_ease-in-out_infinite]"
+                            : "hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:scale-[1.01] focus:shadow-[0_0_18px_rgba(255,255,255,0.25)]"
+                        }`}
                       />
                     </FormControl>
                     <FormMessage />

@@ -137,3 +137,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 8px 40px rgb(255, 89, 0), 0 -8px 40px rgb(149, 255, 0);
+  }
+  50% {
+    box-shadow: -8px 0 40px rgb(255, 89, 0), 8px 0 40px rgb(149, 255, 0);
+  }
+}
