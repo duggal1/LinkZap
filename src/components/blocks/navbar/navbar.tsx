@@ -52,20 +52,17 @@ const Navbar = () => {
                     <div className="flex items-center justify-between h-14">
                         <div className="flex items-center space-x-4">
 
-                        <Link href="/#home">
+                        <Link href="/#home" className="flex items-center gap-2">
                             <Image
                                 src="/linkzap1.png"
                                 alt="Linkzap"
                                 width={40}
                                 height={40}
-                                //  className="h-15 w-15"
-                           />
-
-                        
-                                <span className="text-lg pr-12 font-bold font-heading !leading-none">
+                            />
+                            <span className="text-lg font-bold font-heading !leading-none">
                                 LINKZAP
-                                </span>
-                            </Link>
+                            </span>
+                        </Link>
 
                             <NavigationMenu className="hidden lg:flex">
                                 <NavigationMenuList>
@@ -85,7 +82,7 @@ const Navbar = () => {
                                                                     <NavigationMenuLink asChild className="z-20 relative">
                                                                         <Link
                                                                             href="/"
-                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md"
+                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-4 no-underline outline-none focus:shadow-md"
                                                                         >
                                                                             <h6 className="mb-2 mt-4 text-lg font-medium">
                                                                                 All Features
@@ -112,7 +109,8 @@ const Navbar = () => {
                                                 </>
                                             ) : (
                                                 <Link href={link.href} legacyBehavior passHref>
-                                                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
+                                                        "hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:text-white hover:shadow-lg")}>
                                                         {link.title}
                                                     </NavigationMenuLink>
                                                 </Link>
@@ -161,18 +159,18 @@ const ListItem = React.forwardRef<
                     href={href!}
                     ref={ref}
                     className={cn(
-                        "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-all duration-100 ease-out hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-all duration-100 ease-out hover:bg-gradient-to-r hover:from-orange-500/90  hover:to-orange-600/85 hover:text-white  hover:shadow-lg focus:bg-accent focus:text-accent-foreground",
                         className
                     )}
                     {...props}
                 >
-                    <div className="flex items-center space-x-2 text-neutral-300">
+                    <div className="flex items-center space-x-2  text-white">
                         <Icon className="h-4 w-4" />
-                        <h6 className="text-sm font-medium !leading-none">
+                        <h6 className="text-sm font-medium  text-white !leading-none">
                             {title}
                         </h6>
                     </div>
-                    <p title={children! as string} className="line-clamp-1 text-sm leading-snug text-muted-foreground">
+                    <p title={children! as string} className="line-clamp-1 text-sm leading-snug text-white/90 ">
                         {children}
                     </p>
                 </Link>

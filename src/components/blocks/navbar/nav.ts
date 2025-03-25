@@ -1,4 +1,5 @@
-import { Database, HelpCircleIcon, LineChartIcon, Link2, Link2Icon, LockIcon, NewspaperIcon, QrCodeIcon, ShieldAlert, Users } from "lucide-react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { BarChart, Database, HelpCircleIcon, LineChartIcon, Link2, Link2Icon, LockIcon, NewspaperIcon, QrCode, QrCodeIcon, ShieldAlert, Users } from "lucide-react";
 
 export const NAV_LINKS = [
     {
@@ -7,29 +8,30 @@ export const NAV_LINKS = [
         menu: [
             {
                 title: "Link Shortening",
-                tagline: "Shorten links and track their performance.",
-                href: "/features/link-shortening",
+                tagline:  "Easily shorten links and monitor their performance.",
+                href: "/stats",
                 icon: Link2Icon,
             },
             {
                 title: "Password Protection",
-                tagline: "Secure your links with a password.",
-                href: "/features/password-protection",
+                tagline: "Protect your links with secure password access.",
+                href: "/dashboard",
                 icon: LockIcon,
             },
             {
                 title: "Advanced Analytics",
                 tagline: "Gain insights into who is clicking your links.",
-                href: "/features/analytics",
+                href: "/dashboard/stats",
                 icon: LineChartIcon,
             },
             {
                 title: "Custom QR Codes",
-                tagline: "Use QR codes to reach your audience.",
+                tagline: "Generate and customize QR codes for easy sharing.",
                 href: "/features/qr-codes",
                 icon: QrCodeIcon,
             },
         ],
+
     },
     {
         title: "Pricing",
