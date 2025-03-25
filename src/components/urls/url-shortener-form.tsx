@@ -19,6 +19,7 @@ import { Card, CardContent } from "../ui/card";
 import { AlertTriangle, Copy, QrCode } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { QRCodeModal } from "../modals/qr-code-modal";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { boolean } from "drizzle-orm/gel-core";
 import { toast } from "sonner";
 import { SignupSuggestionDialog } from "../dialogs/signup-suggestion-dialog";

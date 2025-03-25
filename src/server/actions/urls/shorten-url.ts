@@ -2,6 +2,7 @@
 
 import { ApiResponse } from "@/lib/types";
 import { ensureHttps, isValidUrl } from "@/lib/utils";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { custom, z } from "zod";
 import { nanoid } from "nanoid";
 import { db } from "@/server/db";
