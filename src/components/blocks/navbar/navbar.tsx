@@ -21,6 +21,9 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ResponsiveContainer, AreaChart, Area } from "recharts";
 
+
+
+// WIP: -- NEED TO ADD FOR LIGHT MDOE 
 const data = [
     { value: 12, clicks: 15 },
     { value: 18, clicks: 22 },
