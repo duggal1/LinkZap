@@ -89,51 +89,42 @@ const Navbar = () => {
                                                             link.title === "Features" ? "lg:grid-cols-[.75fr_1fr]" : "lg:grid-cols-2"
                                                         )}>
                                                             {link.title === "Features" && (
-                                                                <li className="row-span-4 pr-2 relative rounded-lg overflow-hidden">
-                                                                    <div className="absolute top-0 right-0 w-full h-40 opacity-30">
-                                                                        <ResponsiveContainer width="100%" height="100%">
-                                                                            <AreaChart data={data}>
-                                                                                <defs>
-                                                                                    <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                                                                                        <stop offset="5%" stopColor="#f97316" stopOpacity={0.8}/>
-                                                                                        <stop offset="95%" stopColor="#f97316" stopOpacity={0}/>
-                                                                                    </linearGradient>
-                                                                                    <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
-                                                                                        <stop offset="5%" stopColor="#ea580c" stopOpacity={0.8}/>
-                                                                                        <stop offset="95%" stopColor="#ea580c" stopOpacity={0}/>
-                                                                                    </linearGradient>
-                                                                                </defs>
-                                                                                <Area
-                                                                                    type="monotone"
-                                                                                    dataKey="value"
-                                                                                    stroke="#f97316"
-                                                                                    strokeWidth={2}
-                                                                                    fillOpacity={1}
-                                                                                    fill="url(#colorValue)"
-                                                                                    dot={false}
-                                                                                    isAnimationActive={true}
-                                                                                    animationDuration={2000}
-                                                                                />
-                                                                                <Area
-                                                                                    type="monotone"
-                                                                                    dataKey="clicks"
-                                                                                    stroke="#ea580c"
-                                                                                    strokeWidth={1.5}
-                                                                                    fillOpacity={0.5}
-                                                                                    fill="url(#colorClicks)"
-                                                                                    dot={false}
-                                                                                    isAnimationActive={true}
-                                                                                    animationDuration={1500}
-                                                                                />
-                                                                            </AreaChart>
-                                                                        </ResponsiveContainer>
-                                                                    </div>
-                                                                    <NavigationMenuLink asChild className="z-20 relative">
+                                                                <li className="row-span-4 pr-2 relative rounded-lg overflow-hidden h-[200px]">
+                                                                    <NavigationMenuLink asChild className="h-full">
                                                                         <Link
                                                                             href="/"
-                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-4 no-underline outline-none focus:shadow-md relative overflow-hidden"
+                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-6 no-underline outline-none focus:shadow-md relative"
                                                                         >
-                                                                            <h6 className="mb-2 mt-4 text-lg font-medium relative z-10">
+                                                                            {/* Chart container inside black bg */}
+                                                                            <div className="absolute inset-0 opacity-30">
+                                                                                <ResponsiveContainer width="100%" height="100%">
+                                                                                    <AreaChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+                                                                                        <defs>
+                                                                                            <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                                                                                                <stop offset="5%" stopColor="#f97316" stopOpacity={0.8}/>
+                                                                                                <stop offset="95%" stopColor="#f97316" stopOpacity={0}/>
+                                                                                            </linearGradient>
+                                                                                        </defs>
+                                                                                        <Area
+                                                                                            type="monotone"
+                                                                                            dataKey="value"
+                                                                                            stroke="#f97316"
+                                                                                            strokeWidth={2}
+                                                                                            fillOpacity={1}
+                                                                                            fill="url(#colorValue)"
+                                                                                            dot={false}
+                                                                                            isAnimationActive={true}
+                                                                                            animationDuration={2000}
+                                                                                        />
+                                                                                    </AreaChart>
+                                                                                </ResponsiveContainer>
+                                                                            </div>
+
+                                                                            {/* Grid pattern overlay */}
+                                                                            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgb(38,38,38,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgb(38,38,38,0.5)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-20"></div>
+
+                                                                            {/* Content */}
+                                                                            <h6 className="mb-2 text-lg font-medium relative z-10">
                                                                                 All Features
                                                                             </h6>
                                                                             <p className="text-sm leading-tight text-muted-foreground relative z-10">
@@ -176,6 +167,7 @@ const Navbar = () => {
                                 <div className="flex items-center">
                                     <Link href="/dashboard" className={buttonVariants({ size: "sm", })}>
                                         Dashboard
+                                        <ZapIcon className="size-3.5 ml-1.5 text-lime-500 fill-lime-500" />
                                     </Link>
                                 </div>
                             ) : (
