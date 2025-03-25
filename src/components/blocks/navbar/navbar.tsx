@@ -19,7 +19,7 @@ import AnimationContainer from "./nav-con";
 import { NAV_LINKS } from "./nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { LineChart, Line, ResponsiveContainer, AreaChart, Area } from "recharts";
+import { ResponsiveContainer, AreaChart, Area } from "recharts";
 
 const data = [
     { value: 12, clicks: 15 },
