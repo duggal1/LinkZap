@@ -1,4 +1,4 @@
-import { HelpCircleIcon, LineChartIcon, Link2Icon, LockIcon, NewspaperIcon, QrCodeIcon } from "lucide-react";
+import { Database, HelpCircleIcon, LineChartIcon, Link2, Link2Icon, LockIcon, NewspaperIcon, QrCodeIcon, ShieldAlert, Users } from "lucide-react";
 
 export const NAV_LINKS = [
     {
@@ -60,5 +60,35 @@ export const NAV_LINKS = [
     {
         title: "Changelog",
         href: "/changelog",
+    },
+   {
+    title: "Admin",
+    href: "/admin",
+    menu: [
+        {
+            title: "Link Shortening URLs",
+              tagline: "Manage and track shortened links.",
+            href: "/admin/urls",
+            icon: Link2,
+        },
+        {
+            title: "Flagged URLs",
+              tagline: "Review and handle flagged links.",
+            href: "/admin/urls/flagged",
+            icon: ShieldAlert,
+        },
+        {
+            title: "Admin Management",
+              tagline: "Oversee admin users and permissions.",
+            href: "/admin/users",
+            icon: Users,
+        },
+        {
+            title: "Seeding",
+              tagline: "Populate the database with test data.",
+            href: "/admin/database",
+            icon: Database,
+        },
+        ],
     },
 ];

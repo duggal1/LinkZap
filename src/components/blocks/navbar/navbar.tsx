@@ -18,6 +18,7 @@ import React, { useEffect, useState } from 'react';
 import AnimationContainer from "./nav-con";
 import { NAV_LINKS } from "./nav";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 
 const Navbar = () => {
@@ -47,12 +48,22 @@ const Navbar = () => {
             scroll && "border-background/80 bg-background/40 backdrop-blur-md"
         )}>
             <AnimationContainer reverse delay={0.1} className="size-full">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-14">
-                        <div className="flex items-center space-x-12">
-                            <Link href="/#home">
-                                <span className="text-lg font-bold font-heading !leading-none">
-                                    Linkify
+                        <div className="flex items-center space-x-4">
+
+                        <Link href="/#home">
+                            <Image
+                                src="/linkzap1.png"
+                                alt="Linkzap"
+                                width={40}
+                                height={40}
+                                //  className="h-15 w-15"
+                           />
+
+                        
+                                <span className="text-lg pr-12 font-bold font-heading !leading-none">
+                                LINKZAP
                                 </span>
                             </Link>
 
