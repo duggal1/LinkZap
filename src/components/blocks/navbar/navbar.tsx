@@ -19,16 +19,18 @@ import AnimationContainer from "./nav-con";
 import { NAV_LINKS } from "./nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { LineChart, Line, ResponsiveContainer } from "recharts";
+import { LineChart, Line, ResponsiveContainer, AreaChart, Area } from "recharts";
 
 const data = [
-    { value: 10 },
-    { value: 15 },
-    { value: 13 },
-    { value: 17 },
-    { value: 20 },
-    { value: 25 },
-    { value: 30 },
+    { value: 12, clicks: 15 },
+    { value: 18, clicks: 22 },
+    { value: 25, clicks: 28 },
+    { value: 20, clicks: 23 },
+    { value: 28, clicks: 32 },
+    { value: 35, clicks: 38 },
+    { value: 40, clicks: 45 },
+    { value: 38, clicks: 42 },
+    { value: 45, clicks: 48 },
 ];
 
 const Navbar = () => {
@@ -88,25 +90,49 @@ const Navbar = () => {
                                                         )}>
                                                             {link.title === "Features" && (
                                                                 <li className="row-span-4 pr-2 relative rounded-lg overflow-hidden">
-                                                                    <div className="absolute inset-0 !z-10 h-full w-[calc(100%-10px)] bg-[linear-gradient(to_right,rgb(38,38,38,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgb(38,38,38,0.5)_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
+                                                                    <div className="absolute top-0 right-0 w-full h-40 opacity-30">
+                                                                        <ResponsiveContainer width="100%" height="100%">
+                                                                            <AreaChart data={data}>
+                                                                                <defs>
+                                                                                    <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                                                                                        <stop offset="5%" stopColor="#f97316" stopOpacity={0.8}/>
+                                                                                        <stop offset="95%" stopColor="#f97316" stopOpacity={0}/>
+                                                                                    </linearGradient>
+                                                                                    <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
+                                                                                        <stop offset="5%" stopColor="#ea580c" stopOpacity={0.8}/>
+                                                                                        <stop offset="95%" stopColor="#ea580c" stopOpacity={0}/>
+                                                                                    </linearGradient>
+                                                                                </defs>
+                                                                                <Area
+                                                                                    type="monotone"
+                                                                                    dataKey="value"
+                                                                                    stroke="#f97316"
+                                                                                    strokeWidth={2}
+                                                                                    fillOpacity={1}
+                                                                                    fill="url(#colorValue)"
+                                                                                    dot={false}
+                                                                                    isAnimationActive={true}
+                                                                                    animationDuration={2000}
+                                                                                />
+                                                                                <Area
+                                                                                    type="monotone"
+                                                                                    dataKey="clicks"
+                                                                                    stroke="#ea580c"
+                                                                                    strokeWidth={1.5}
+                                                                                    fillOpacity={0.5}
+                                                                                    fill="url(#colorClicks)"
+                                                                                    dot={false}
+                                                                                    isAnimationActive={true}
+                                                                                    animationDuration={1500}
+                                                                                />
+                                                                            </AreaChart>
+                                                                        </ResponsiveContainer>
+                                                                    </div>
                                                                     <NavigationMenuLink asChild className="z-20 relative">
                                                                         <Link
                                                                             href="/"
                                                                             className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-4 no-underline outline-none focus:shadow-md relative overflow-hidden"
                                                                         >
-                                                                            <div className="absolute top-0 right-0 w-full h-32 opacity-20">
-                                                                                <ResponsiveContainer width="100%" height="100%">
-                                                                                    <LineChart data={data}>
-                                                                                        <Line
-                                                                                            type="monotone"
-                                                                                            dataKey="value"
-                                                                                            stroke="#f97316"
-                                                                                            strokeWidth={2}
-                                                                                            dot={false}
-                                                                                        />
-                                                                                    </LineChart>
-                                                                                </ResponsiveContainer>
-                                                                            </div>
                                                                             <h6 className="mb-2 mt-4 text-lg font-medium relative z-10">
                                                                                 All Features
                                                                             </h6>
