@@ -33,17 +33,17 @@ export const TextHoverEffect = ({
   switch (color) {
     case "orange-lime-yellow":
       gradientColors = [
-        { offset: "0%", color: "#FF6B00" },  // Deep Orange
-        { offset: "50%", color: "#C0FF00" }, // Lime
-        { offset: "100%", color: "#FFD700" } // Yellow
+        { offset: "0%", color: "#ff5100" },  // Deep Orange
+        { offset: "50%", color: "#ff5e00" }, // Lime
+        { offset: "100%", color: "#ff6f00" } // Yellow
       ];
       break;
     default:
       gradientColors = [
-        { offset: "0%", color: "#FF6B00" },
-        { offset: "33%", color: "#C0FF00" },
-        { offset: "66%", color: "#FFD700" },
-        { offset: "100%", color: "#FF6B00" }
+        { offset: "0%", color: "#ff4800" },
+        { offset: "33%", color: "#ff6200" },
+        { offset: "66%", color: "#ffae00" },
+        { offset: "100%", color: "#ffd900" }
       ];
   }
 

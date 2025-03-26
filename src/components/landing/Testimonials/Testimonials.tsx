@@ -10,7 +10,6 @@ import { REVIEWS } from "./testimonies-constant";
 import MagicCard from "./magic-card";
 
 
-
 // Define the Review type structure
 interface Review {
   name: string;
@@ -100,7 +99,7 @@ const VerticalTestimonialScroll: React.FC = () => {
     <MagicCard 
       className="hover:shadow-xl mb-6 border-0 w-full 
       hover:scale-[1.02] transition-all duration-700 ease-out
-      hover:bg-gradient-to-br hover:from-orange-500/20 hover:to-lime-400/20
+      hover:bg-gradient-to-br hover:from-orange-500/40 hover:to-orange-400/20
       group backdrop-blur-sm"
       containerClassName="group"
     >
@@ -109,7 +108,7 @@ const VerticalTestimonialScroll: React.FC = () => {
           <div className="flex items-center gap-4">
             {review.userImage && (
               <div className="relative border-2 border-foreground/5 
-                group-hover:border-orange-500/20 rounded-full w-12 h-12 overflow-hidden 
+                group-hover:border-orange-500/40 rounded-full w-12 h-12 overflow-hidden 
                 group-hover:scale-105 transition-transform duration-700">
                 <Image 
                   src={review.userImage} 
@@ -122,7 +121,7 @@ const VerticalTestimonialScroll: React.FC = () => {
             <div>
               <CardTitle className="font-medium text-foreground/90 
                 group-hover:text-transparent group-hover:bg-gradient-to-r 
-                group-hover:from-orange-500 group-hover:to-lime-400 
+                group-hover:from-orange-500 group-hover:to-orange-400 
                 group-hover:bg-clip-text text-base tracking-tight transition-all duration-300">
                 {review.name}
               </CardTitle>
@@ -161,7 +160,8 @@ const VerticalTestimonialScroll: React.FC = () => {
           {Array.from({ length: review.rating }, (_, i) => (
             <StarIcon 
               key={i} 
-              className="fill-orange-500 w-3.5 h-3.5 text-orange-500  group-hover:scale-110 transition-transform duration-300" 
+              className="fill-orange-500 w-3.5 h-3.5 text-orange-500  
+              group-hover:scale-110 group-hover:text-orange-400 transition-transform duration-300" 
               style={{ 
                 transitionDelay: `${i * 50}ms` 
               }}

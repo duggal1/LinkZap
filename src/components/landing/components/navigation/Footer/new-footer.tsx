@@ -4,7 +4,7 @@ import Link from "next/link";
 import AnimationContainer from "../../global/animation-container";
 import { DIcons } from "dicons";
  
-
+import Image from "next/image";
 
 const navigation = {
   categories: [
@@ -79,8 +79,16 @@ export function NewFooter() {
     <AnimationContainer delay={0.1}>
       <div className="relative mx-auto grid  max-w-7xl items-center justify-center gap-6 p-10 pb-0 md:flex ">
         <Link href="/">
-          <p className="flex items-center justify-center rounded-full  ">
-            <DIcons.Designali className="w-8 text-red-600" />
+          <p className="flex items-center justify-center  ">
+           <Image
+            src="/linkzap.png"
+            alt="Designali"
+            width={160}
+            height={160}
+            className=" "
+           
+           
+           />
           </p>
         </Link>
         <p className="bg-transparent text-center text-xs leading-4 text-primary/60 md:text-left">
