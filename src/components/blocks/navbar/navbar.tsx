@@ -21,9 +21,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ResponsiveContainer, AreaChart, Area } from "recharts";
 
-
-
-// WIP: -- NEED TO ADD FOR LIGHT MDOE 
 const data = [
     { value: 12, clicks: 15 },
     { value: 18, clicks: 22 },
@@ -96,10 +93,10 @@ const Navbar = () => {
                                                                     <NavigationMenuLink asChild className="h-full">
                                                                         <Link
                                                                             href="/"
-                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-6 no-underline outline-none focus:shadow-md relative"
+                                                                            className="flex h-full w-full select-none flex-col justify-end rounded-lg bg-black p-6 no-underline outline-none focus:shadow-md relative dark:bg-black bg-white"
                                                                         >
                                                                             {/* Chart container inside black bg */}
-                                                                            <div className="absolute inset-0 opacity-30">
+                                                                            <div className="absolute inset-0 opacity-30 dark:bg-black bg-white">
                                                                                 <ResponsiveContainer width="100%" height="100%">
                                                                                     <AreaChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                                                                                         <defs>
@@ -127,7 +124,7 @@ const Navbar = () => {
                                                                             <div className="absolute inset-0 bg-[linear-gradient(to_right,rgb(38,38,38,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgb(38,38,38,0.5)_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-20"></div>
 
                                                                             {/* Content */}
-                                                                            <h6 className="mb-2 text-lg font-medium relative z-10">
+                                                                            <h6 className="mb-2 text-lg font-medium text-black dark:text-white relative z-10">
                                                                                 All Features
                                                                             </h6>
                                                                             <p className="text-sm leading-tight text-muted-foreground relative z-10">
@@ -153,7 +150,7 @@ const Navbar = () => {
                                             ) : (
                                                 <Link href={link.href} legacyBehavior passHref>
                                                     <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 
-                                                        "hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:text-white hover:shadow-lg")}>
+                                                        "hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 hover:text-white hover:shadow-lg text-black dark:text-white")}>
                                                         {link.title}
                                                     </NavigationMenuLink>
                                                 </Link>
@@ -208,13 +205,13 @@ const ListItem = React.forwardRef<
                     )}
                     {...props}
                 >
-                    <div className="flex items-center space-x-2  text-white">
+                    <div className="flex items-center space-x-2 text-black dark:text-white">
                         <Icon className="h-4 w-4" />
-                        <h6 className="text-sm font-medium  text-white !leading-none">
+                        <h6 className="text-sm font-medium text-black dark:text-white !leading-none">
                             {title}
                         </h6>
                     </div>
-                    <p title={children! as string} className="line-clamp-1 text-sm leading-snug text-white/90 ">
+                    <p title={children! as string} className="line-clamp-1 text-sm leading-snug text-black dark:text-white/90 ">
                         {children}
                     </p>
                 </Link>
