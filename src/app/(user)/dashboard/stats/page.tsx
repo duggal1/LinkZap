@@ -385,10 +385,15 @@ export default function StatsPage() {
                   </CardFooter>
                 </Card>
               </TabsContent>
+             
+             
+             
+             
+             
               <TabsContent value="combined" className="min-h-[400px] mt-4">
   <Card className="bg-gradient-to-br from-background via-background/50 to-background/80">
     <CardHeader>
-      <CardTitle className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-secondary">
+      <CardTitle className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
         Advanced Analytics
       </CardTitle>
       <CardDescription>Interactive performance visualization</CardDescription>
@@ -399,12 +404,12 @@ export default function StatsPage() {
           <ComposedChart data={barChartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorfulGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="hsl(var(--secondary))" stopOpacity={0.2} />
+                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.2} />
               </linearGradient>
               <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.4} />
-                <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity={0.1} />
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.4} />
+                <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.1} />
               </linearGradient>
               <filter id="glow">
                 <feGaussianBlur stdDeviation="2" result="blur" />
@@ -414,17 +419,17 @@ export default function StatsPage() {
             <CartesianGrid 
               strokeDasharray="3 3"
               vertical={false}
-              stroke="hsl(var(--border))"
+              stroke="#374151"
               opacity={0.1}
             />
             <XAxis
               dataKey="url"
-              tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
+              tick={{ fill: '#6b7280', fontSize: 12 }}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
-              tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
+              tick={{ fill: '#6b7280', fontSize: 12 }}
               axisLine={false}
               tickLine={false}
               width={30}
@@ -435,12 +440,12 @@ export default function StatsPage() {
                 if (active && payload?.[0]) {
                   const clickValue = Number(payload[0].value);
                   return (
-                    <div className="rounded-lg bg-background/95 backdrop-blur-sm shadow-xl border border-border p-3">
+                    <div className="rounded-lg bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm shadow-xl border border-gray-200 dark:border-gray-700 p-3">
                       <p className="text-sm font-medium mb-1">{label}</p>
-                      <p className="text-sm text-primary font-medium">
+                      <p className="text-sm text-blue-500 dark:text-blue-400 font-medium">
                         {clickValue} clicks
                       </p>
-                      <div className="text-xs text-muted-foreground mt-1">
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                         {!isNaN(clickValue) && clickValue > avgClicks ? '↗ Above average' : '↘ Below average'}
                       </div>
                     </div>
@@ -453,25 +458,25 @@ export default function StatsPage() {
               type="monotone"
               dataKey="clicks"
               fill="url(#areaGradient)"
-              strokeWidth={0}
+              stroke="none"
               fillOpacity={0.8}
             />
             <Line
               type="monotone"
               dataKey="clicks"
-              stroke="hsl(var(--primary))"
+              stroke="#3b82f6"
               strokeWidth={3}
               dot={{
-                stroke: 'hsl(var(--primary))',
+                stroke: '#3b82f6',
                 strokeWidth: 2,
-                fill: 'hsl(var(--background))',
+                fill: '#ffffff',
                 r: 5,
                 filter: 'url(#glow)'
               }}
               activeDot={{
-                stroke: 'hsl(var(--primary))',
+                stroke: '#3b82f6',
                 strokeWidth: 3,
-                fill: 'hsl(var(--background))',
+                fill: '#ffffff',
                 r: 7,
                 filter: 'url(#glow)'
               }}
@@ -480,11 +485,11 @@ export default function StatsPage() {
               y={avgClicks}
               label={{
                 value: "Average",
-                fill: "hsl(var(--muted-foreground))",
+                fill: "#6b7280",
                 fontSize: 12,
                 position: "right"
               }}
-              stroke="hsl(var(--muted-foreground))"
+              stroke="#6b7280"
               strokeDasharray="3 3"
               opacity={0.5}
             />
@@ -492,21 +497,27 @@ export default function StatsPage() {
         </ResponsiveContainer>
       </ChartContainer>
     </CardContent>
-    <CardFooter className="flex-col items-start gap-2 text-sm border-t border-border/30 bg-muted/5">
+    <CardFooter className="flex-col items-start gap-2 text-sm border-t border-gray-200 dark:border-gray-800 bg-gray-50/5 dark:bg-gray-900/5">
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-2">
-          <div className="size-2 rounded-full bg-gradient-to-r from-primary to-secondary animate-pulse" />
-          <span className="text-sm text-muted-foreground">
+          <div className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse" />
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             Real-time performance tracking
           </span>
         </div>
-        <div className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+        <div className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
           Avg. {avgClicks} clicks per URL
         </div>
       </div>
     </CardFooter>
   </Card>
 </TabsContent>
+
+
+
+
+
+
             </Tabs>
           ) : (
             <div className="text-center py-8 text-muted-foreground">
