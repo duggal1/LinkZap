@@ -6,6 +6,7 @@ import { AuthProvider } from "@/components/providers/auth-provider";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Navbar from "@/components/blocks/navbar/navbar";
+import { Footer } from "@/components/landing/components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,10 @@ export default function RootLayout({
           <AuthProvider>
             <ToastProvider />
             <Navbar/>
-            {children}
+            <main className="mt-20 mx-auto w-full z-0 relative">
+                {children}
+            </main>
+            <Footer />
           </AuthProvider>
         </ThemeProvider>
       </body>

@@ -167,7 +167,7 @@ const Navbar = () => {
                                 <div className="flex items-center">
                                     <Link href="/dashboard" className={buttonVariants({ size: "sm", })}>
                                         Dashboard
-                                        <ZapIcon className="size-3.5 ml-1.5 text-blue-700 fill-blue-700" />
+                                        <ZapIcon className="size-3.5 ml-1.5 text-orange-500 fill-orange-500" />
                                     </Link>
                                 </div>
                             ) : (
@@ -175,9 +175,8 @@ const Navbar = () => {
                                     <Link href="/login" className={buttonVariants({ size: "sm", variant: "ghost" })}>
                                         Sign In
                                     </Link>
-                                    <Link href="/register" className={buttonVariants({ size: "sm", })}>
+                                    <Link href="/register" className={buttonVariants({ size: "sm", className: "hover:bg-gradient-to-bl hover:from-orange-600 hover:to-lime-500 hover:text-white" })}>
                                         Get Started
-                                        <ZapIcon className="size-3.5 ml-1.5 text-orange-500 fill-orange-500" />
                                     </Link>
                                 </div>
                             )}
