@@ -53,12 +53,12 @@ export const CARDS = [
             <Command className="absolute right-10 top-10 w-[70%] origin-to translate-x-0 border border-border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10 p-2">
                 <Input placeholder="Type to search..." />
                 <div className="mt-1 cursor-pointer">
-                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkify.io/hdf00c</div>
-                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkify.io/sdv0n0</div>
-                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkify.io/03gndo</div>
-                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkify.io/09vmmw</div>
-                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkify.io/s09vws</div>
-                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkify.io/sd8fv5</div>
+                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkzap.io/h9ggc</div>
+                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkzap.io/s9eee20</div>
+                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkzap.io/pcwwjo</div>
+                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkzap.io/llsyg6w</div>
+                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkzap.io/vsctvyi</div>
+                    <div className="px-4 py-2 hover:bg-muted rounded-md">linkzap.io/89gggx</div>
                 </div>
             </Command>
         ),

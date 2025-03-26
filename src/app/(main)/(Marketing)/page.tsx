@@ -1,7 +1,7 @@
 
 
 import FeaturesGrid from "@/components/landing/features-4";
-import { AnimationContainer, MaxWidthWrapper, PricingCards } from "@/components/landing/components";
+import { AnimationContainer, MaxWidthWrapper} from "@/components/landing/components";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon, CreditCardIcon} from "lucide-react";
@@ -86,7 +86,7 @@ const HomePage = async () => {
             {/* Companies Section */}
             <MaxWidthWrapper>
                 <AnimationContainer delay={0.4}>
-                    <div className="py-14">
+                    <div className="py-14 -mt-40">
                        
                             <Companies/>
                              
@@ -123,7 +123,7 @@ const HomePage = async () => {
         <div className="flex flex-col items-center lg:items-center justify-center w-full py-8 max-w-xl mx-auto">
             <MagicBadge title="The Process" />
             <h2 className="text-center lg:text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground mt-6">
-                Professional Link Management in <span className="text-transparent bg-gradient-to-r from-orange-400 to-orange-700 bg-clip-text">3 Steps</span>
+                Professional Link Management in <span className="text-transparent bg-gradient-to-r from-orange-400 to-orange-700 bg-clip-text">5 Steps</span>
             </h2>
             <p className="mt-4 text-center lg:text-center text-lg text-neutral-300 max-w-lg font-light">
                 Streamline your workflow with LinkZap&apos;s intuitive process.
@@ -165,7 +165,7 @@ const HomePage = async () => {
             <MaxWidthWrapper className="py-10">
                 <AnimationContainer delay={0.1}>
                     <div>
-                        
+
                     </div>
                 </AnimationContainer>
                 <AnimationContainer delay={0.2}>
