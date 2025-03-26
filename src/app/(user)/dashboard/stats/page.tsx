@@ -322,9 +322,11 @@ export default function StatsPage() {
                                 stroke="hsl(var(--background))"
                               />
                             ))}
+                            
                             <Label
                               content={({ viewBox }) => {
                                 // Safe type assertion for viewBox
+                                                        // Safe type assertion for viewBox
                                 const safeViewBox = viewBox as { cx?: number; cy?: number };
                                 if (safeViewBox?.cx !== undefined && safeViewBox?.cy !== undefined) {
                                   return (
