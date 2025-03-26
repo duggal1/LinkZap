@@ -35,6 +35,10 @@ import {
   AreaChart,
   ComposedChart,
   Line,
+  YAxis,
+  Tooltip,
+  Legend,
+  ReferenceLine,
 } from "recharts";
 
 interface Url {
@@ -322,38 +326,32 @@ export default function StatsPage() {
                                 stroke="hsl(var(--background))"
                               />
                             ))}
-                            
                             <Label
                               content={({ viewBox }) => {
-                                // Safe type assertion for viewBox
-                                                       
-                                const safeViewBox = viewBox as { cx?: number; cy?: number };
-                                if (safeViewBox?.cx !== undefined && safeViewBox?.cy !== undefined) {
-                                  return (
-                                    <text
+                                const safeViewBox = viewBox as { cx: number; cy: number };
+                                return safeViewBox.cx && safeViewBox.cy ? (
+                                  <text
+                                    x={safeViewBox.cx}
+                                    y={safeViewBox.cy}
+                                    textAnchor="middle"
+                                    dominantBaseline="middle"
+                                  >
+                                    <tspan
                                       x={safeViewBox.cx}
-                                      y={safeViewBox.cy}
-                                      textAnchor="middle"
-                                      dominantBaseline="middle"
+                                      y={safeViewBox.cy - 10}
+                                      className="fill-foreground text-3xl font-bold"
                                     >
-                                      <tspan
-                                        x={safeViewBox.cx}
-                                        y={safeViewBox.cy - 10}
-                                        className="fill-foreground text-3xl font-bold"
-                                      >
-                                        {totalClicks.toLocaleString()}
-                                      </tspan>
-                                      <tspan
-                                        x={safeViewBox.cx}
-                                        y={safeViewBox.cy + 15}
-                                        className="fill-muted-foreground text-sm"
-                                      >
-                                        Total Clicks
-                                      </tspan>
-                                    </text>
-                                  );
-                                }
-                                return null;
+                                      {totalClicks.toLocaleString()}
+                                    </tspan>
+                                    <tspan
+                                      x={safeViewBox.cx}
+                                      y={safeViewBox.cy + 15}
+                                      className="fill-muted-foreground text-sm"
+                                    >
+                                      Total Clicks
+                                    </tspan>
+                                  </text>
+                                ) : null;
                               }}
                             />
                           </Pie>
@@ -388,96 +386,131 @@ export default function StatsPage() {
                 </Card>
               </TabsContent>
               <TabsContent value="combined" className="min-h-[400px] mt-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Advanced URL Analytics</CardTitle>
-                    <CardDescription>Combined performance metrics</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ChartContainer config={barChartConfig}>
-                      <ResponsiveContainer width="100%" height={400}>
-                        <ComposedChart data={barChartData}>
-                          <defs>
-                            <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8}/>
-                              <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.1}/>
-                            </linearGradient>
-                            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity={0.4}/>
-                              <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity={0.1}/>
-                            </linearGradient>
-                          </defs>
-                          <CartesianGrid 
-                            strokeDasharray="3 3"
-                            vertical={false}
-                            stroke="hsl(var(--border))"
-                            opacity={0.3}
-                          />
-                          <XAxis 
-                            dataKey="url"
-                            tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
-                            axisLine={false}
-                            tickLine={false}
-                          />
-                          <ChartTooltip
-                            content={
-                              <ChartTooltipContent
-                                indicator="line"
-                                labelFormatter={(label) => `URL: ${label}`}
-                              />
-                            }
-                          />
-                          <Bar 
-                            dataKey="clicks"
-                            fill="url(#colorClicks)"
-                            radius={[6, 6, 0, 0]}
-                            maxBarSize={50}
-                          />
-                          <Area
-                            type="monotone"
-                            dataKey="clicks"
-                            stroke="hsl(var(--secondary))"
-                            strokeWidth={2}
-                            fillOpacity={1}
-                            fill="url(#areaGradient)"
-                          />
-                          <Line
-                            type="monotone"
-                            dataKey="clicks"
-                            stroke="hsl(var(--primary))"
-                            strokeWidth={2}
-                            dot={{
-                              stroke: 'hsl(var(--primary))',
-                              strokeWidth: 2,
-                              fill: 'hsl(var(--background))',
-                              r: 4
-                            }}
-                            activeDot={{
-                              stroke: 'hsl(var(--primary))',
-                              strokeWidth: 2,
-                              fill: 'hsl(var(--background))',
-                              r: 6
-                            }}
-                          />
-                        </ComposedChart>
-                      </ResponsiveContainer>
-                    </ChartContainer>
-                  </CardContent>
-                  <CardFooter className="flex-col items-start gap-2 text-sm">
-                    <div className="flex gap-2 font-medium leading-none">
-                      Total Impact: {totalClicks} clicks across {userUrls.length} URLs
+  <Card className="bg-gradient-to-br from-background via-background/50 to-background/80">
+    <CardHeader>
+      <CardTitle className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-secondary">
+        Advanced Analytics
+      </CardTitle>
+      <CardDescription>Interactive performance visualization</CardDescription>
+    </CardHeader>
+    <CardContent className="p-2">
+      <ChartContainer config={barChartConfig}>
+        <ResponsiveContainer width="100%" height={450}>
+          <ComposedChart data={barChartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+            <defs>
+              <linearGradient id="colorfulGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="hsl(var(--secondary))" stopOpacity={0.2} />
+              </linearGradient>
+              <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.4} />
+                <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity={0.1} />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <CartesianGrid 
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="hsl(var(--border))"
+              opacity={0.1}
+            />
+            <XAxis
+              dataKey="url"
+              tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
+              axisLine={false}
+              tickLine={false}
+            />
+            <YAxis
+              tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
+              axisLine={false}
+              tickLine={false}
+              width={30}
+            />
+            <Tooltip
+              cursor={{ strokeDasharray: '3 3' }}
+              content={({ active, payload, label }) => {
+                if (active && payload?.[0]) {
+                  const clickValue = Number(payload[0].value);
+                  return (
+                    <div className="rounded-lg bg-background/95 backdrop-blur-sm shadow-xl border border-border p-3">
+                      <p className="text-sm font-medium mb-1">{label}</p>
+                      <p className="text-sm text-primary font-medium">
+                        {clickValue} clicks
+                      </p>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        {!isNaN(clickValue) && clickValue > avgClicks ? '↗ Above average' : '↘ Below average'}
+                      </div>
                     </div>
-                    <div className="leading-none text-muted-foreground">
-                      Comprehensive view of your URL performance metrics
-                    </div>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
+                  );
+                }
+                return null;
+              }}
+            />
+            <Area
+              type="monotone"
+              dataKey="clicks"
+              fill="url(#areaGradient)"
+              strokeWidth={0}
+              fillOpacity={0.8}
+            />
+            <Line
+              type="monotone"
+              dataKey="clicks"
+              stroke="hsl(var(--primary))"
+              strokeWidth={3}
+              dot={{
+                stroke: 'hsl(var(--primary))',
+                strokeWidth: 2,
+                fill: 'hsl(var(--background))',
+                r: 5,
+                filter: 'url(#glow)'
+              }}
+              activeDot={{
+                stroke: 'hsl(var(--primary))',
+                strokeWidth: 3,
+                fill: 'hsl(var(--background))',
+                r: 7,
+                filter: 'url(#glow)'
+              }}
+            />
+            <ReferenceLine
+              y={avgClicks}
+              label={{
+                value: "Average",
+                fill: "hsl(var(--muted-foreground))",
+                fontSize: 12,
+                position: "right"
+              }}
+              stroke="hsl(var(--muted-foreground))"
+              strokeDasharray="3 3"
+              opacity={0.5}
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </ChartContainer>
+    </CardContent>
+    <CardFooter className="flex-col items-start gap-2 text-sm border-t border-border/30 bg-muted/5">
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-2">
+          <div className="size-2 rounded-full bg-gradient-to-r from-primary to-secondary animate-pulse" />
+          <span className="text-sm text-muted-foreground">
+            Real-time performance tracking
+          </span>
+        </div>
+        <div className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          Avg. {avgClicks} clicks per URL
+        </div>
+      </div>
+    </CardFooter>
+  </Card>
+</TabsContent>
             </Tabs>
           ) : (
             <div className="text-center py-8 text-muted-foreground">
-              No URL data available yet. Create some short URLs to see the
-              stats.
+              No URL data available yet. Create some short URLs to see the stats.
             </div>
           )}
         </CardContent>
