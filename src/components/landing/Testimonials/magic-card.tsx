@@ -60,14 +60,14 @@ const MagicCard = ({ children, className, containerClassName }: Props) => {
                 className="absolute -inset-px opacity-0 transition-all duration-700 ease-in-out pointer-events-none"
                 style={{
                     opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(139,92,246,0.15), rgba(67,56,202,0.15), transparent 70%)`,
+                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,140,0,0.3), rgba(255,94,0,0.2), transparent 70%)`,
                 }}
             />
             <div
                 className="absolute -inset-px opacity-0 blur-xl transition-all duration-700 ease-in-out pointer-events-none"
                 style={{
                     opacity: opacity * 0.6,
-                    background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(139,92,246,0.1), rgba(67,56,202,0.1), transparent 50%)`,
+                    background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(255,140,0,0.2), rgba(255,94,0,0.15), transparent 50%)`,
                 }}
             />
             {children}

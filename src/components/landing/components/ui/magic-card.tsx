@@ -6,9 +6,10 @@ import React, { useRef, useState } from "react";
 interface Props {
     children: React.ReactNode;
     className?: string;
+    containerClassName?: string;
 }
 
-const MagicCard = ({ children, className }: Props) => {
+const MagicCard = ({ children, className, containerClassName }: Props) => {
     const divRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -50,15 +51,23 @@ const MagicCard = ({ children, className }: Props) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={cn(
-                "relative max-w-md overflow-hidden rounded-xl border border-border/60 bg-gradient-to-r from-background to-background/40 p-4 md:p-6",
-                className
+                "relative max-w-md overflow-hidden rounded-xl border border-border/60 bg-gradient-to-r from-background via-background/95 to-background/90 p-4 md:p-6 transition-all duration-500 ease-out",
+                className,
+                containerClassName
             )}
         >
             <div
-                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+                className="absolute -inset-px opacity-0 transition-all duration-700 ease-in-out pointer-events-none"
                 style={{
                     opacity,
-                    background: `radial-gradient(500px circle at ${position.x}px ${position.y}px, rgba(168,85,247,.15), transparent 60%)`,
+                    background: `radial-gradient(500px circle at ${position.x}px ${position.y}px, rgba(255,165,0,0.35), rgba(255,140,0,0.2), transparent 75%)`,
+                }}
+            />
+            <div
+                className="absolute -inset-px opacity-0 blur-xl transition-all duration-700 ease-in-out pointer-events-none"
+                style={{
+                    opacity: opacity * 0.5,
+                    background: `radial-gradient(350px circle at ${position.x}px ${position.y}px, rgba(255,165,0,0.25), rgba(255,140,0,0.15), transparent 60%)`,
                 }}
             />
             {children}

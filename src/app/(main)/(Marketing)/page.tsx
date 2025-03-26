@@ -2,7 +2,7 @@
 
 import FeaturesGrid from "@/components/landing/features-4";
 import { AnimationContainer, MaxWidthWrapper, PricingCards } from "@/components/landing/components";
-import { BorderBeam } from "@/components/landing/components/ui/border-beam";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon, CreditCardIcon} from "lucide-react";
 import Link from "next/link";
@@ -14,6 +14,8 @@ import MagicCard from "@/components/landing/components/ui/magic-card";
 import VerticalTestimonialScroll from "@/components/landing/Testimonials/Testimonials";
 import Companies from "@/components/landing/Companies/hero-companies";
 import { AnimatedGradientTexts } from "@/components/landing/header/cta";
+import TryLinkzaps from "@/components/landing/urls/try-linkzap";
+import { BorderBeam } from "@/components/magicui/border-beam";
 
 const HomePage = async () => {
 
@@ -61,7 +63,7 @@ const HomePage = async () => {
                                 delay={9}
                             />
                             <Image
-                                src="/assets/dashboard-dark.svg"
+                                src="/linkzap-dashboard.png"
                                 alt="Dashboard"
                                 width={1200}
                                 height={1200}
@@ -74,6 +76,11 @@ const HomePage = async () => {
                     </AnimationContainer>
                 </div>
             </MaxWidthWrapper >
+            <AnimationContainer delay={0.4}> 
+
+           
+            <TryLinkzaps/>
+            </AnimationContainer>
 
             {/* Companies Section */}
             <MaxWidthWrapper>
