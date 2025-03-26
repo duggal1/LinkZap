@@ -167,7 +167,7 @@ const Navbar = () => {
                                 <div className="flex items-center">
                                     <Link href="/dashboard" className={buttonVariants({ size: "sm", })}>
                                         Dashboard
-                                        <ZapIcon className="size-3.5 ml-1.5 text-lime-500 fill-lime-500" />
+                                        <ZapIcon className="size-3.5 ml-1.5 text-blue-700 fill-blue-700" />
                                     </Link>
                                 </div>
                             ) : (

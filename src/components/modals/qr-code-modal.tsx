@@ -57,7 +57,7 @@ export function QRCodeModal({
     if (!qrCodeDataUrl) return;
     const link = document.createElement("a");
     link.href = qrCodeDataUrl;
-    link.download = `shortlink-${shortCode}.png`;
+    link.download = `LinkZap-${shortCode}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -89,7 +89,7 @@ export function QRCodeModal({
                 unoptimized
               />
               <p className="text-sm text-center text-muted-foreground">
-                Scan the QR code to open the link in your device's browser.
+                Scan the QR code to open the link in your device&apos;s browser.
               </p>
               <Button onClick={downloadQRCode} className="w-full">
                 <Download className="size-4 mr-2" />
