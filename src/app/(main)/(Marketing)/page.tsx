@@ -16,6 +16,7 @@ import Companies from "@/components/landing/Companies/hero-companies";
 import { AnimatedGradientTexts } from "@/components/landing/header/cta";
 import TryLinkzaps from "@/components/landing/urls/try-linkzap";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import { PricingBasic } from "@/components/landing/New-Pricing/pricings";
 
 const HomePage = async () => {
 
@@ -163,18 +164,12 @@ const HomePage = async () => {
             {/* Pricing Section */}
             <MaxWidthWrapper className="py-10">
                 <AnimationContainer delay={0.1}>
-                    <div className="flex flex-col items-center lg:items-center justify-center w-full py-8 max-w-xl mx-auto">
-                        <MagicBadge title="Simple Pricing" />
-                        <h2 className="text-center lg:text-center text-3xl md:text-5xl !leading-[1.1] font-medium font-heading text-foreground mt-6">
-                            Enterprise Solutions for Every Scale
-                        </h2>
-                        <p className="mt-4 text-center lg:text-center text-lg text-neutral-300 max-w-lg font-light">
-                            Choose the perfect LinkZap plan for your organization&apos;s needs.
-                        </p>
+                    <div>
+                        
                     </div>
                 </AnimationContainer>
                 <AnimationContainer delay={0.2}>
-                    <PricingCards />
+                <PricingBasic/>
                 </AnimationContainer>
                 <AnimationContainer delay={0.3}>
                     <div className="flex flex-wrap items-start md:items-center justify-center lg:justify-evenly gap-6 mt-12 max-w-5xl mx-auto w-full">
@@ -187,6 +182,7 @@ const HomePage = async () => {
                     </div>
                 </AnimationContainer>
             </MaxWidthWrapper>
+     
 
             {/* Reviews Section */}
                 <AnimationContainer delay={0.1}>
