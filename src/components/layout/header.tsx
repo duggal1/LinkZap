@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
@@ -28,8 +29,8 @@ export function Header() {
   return (
     <header className="border-b">
       <div className="container mx-auto flex items-center justify-between p-4">
-        <Link href={"/"} className="text-xl font-bold">
-          ShortLink
+        <Link href={"/"} className="text-lg font-bold">
+          {/* dont add anything here keep it emapty */}
         </Link>
 
         {/* Desktop nav */}

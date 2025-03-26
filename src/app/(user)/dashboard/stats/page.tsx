@@ -388,12 +388,14 @@ export default function StatsPage() {
              
              
              
+{/* SLEEK ORANGE CHARTS */}
+
+
              
-             
-              <TabsContent value="combined" className="min-h-[400px] mt-4">
+<TabsContent value="combined" className="min-h-[400px] mt-4">
   <Card className="bg-gradient-to-br from-background via-background/50 to-background/80">
     <CardHeader>
-      <CardTitle className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+      <CardTitle className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-700">
         Advanced Analytics
       </CardTitle>
       <CardDescription>Interactive performance visualization</CardDescription>
@@ -404,12 +406,12 @@ export default function StatsPage() {
           <ComposedChart data={barChartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorfulGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.2} />
+                <stop offset="5%" stopColor="#f97316" stopOpacity={0.8} />
+                <stop offset="95%" stopColor="#ea580c" stopOpacity={0.2} />
               </linearGradient>
               <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.4} />
-                <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.1} />
+                <stop offset="0%" stopColor="#f97316" stopOpacity={0.4} />
+                <stop offset="100%" stopColor="#ea580c" stopOpacity={0.1} />
               </linearGradient>
               <filter id="glow">
                 <feGaussianBlur stdDeviation="2" result="blur" />
@@ -440,9 +442,9 @@ export default function StatsPage() {
                 if (active && payload?.[0]) {
                   const clickValue = Number(payload[0].value);
                   return (
-                    <div className="rounded-lg bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm shadow-xl border border-gray-200 dark:border-gray-700 p-3">
+                    <div className="rounded-lg bg-white dark:bg-black backdrop-blur-sm shadow-xl border border-gray-200 dark:border-gray-900 p-3">
                       <p className="text-sm font-medium mb-1">{label}</p>
-                      <p className="text-sm text-blue-500 dark:text-blue-400 font-medium">
+                      <p className="text-sm text-orange-500 dark:text-orange-700 font-medium">
                         {clickValue} clicks
                       </p>
                       <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
@@ -464,17 +466,17 @@ export default function StatsPage() {
             <Line
               type="monotone"
               dataKey="clicks"
-              stroke="#3b82f6"
+              stroke="#f97316"
               strokeWidth={3}
               dot={{
-                stroke: '#3b82f6',
+                stroke: '#f97316',
                 strokeWidth: 2,
                 fill: '#ffffff',
                 r: 5,
                 filter: 'url(#glow)'
               }}
               activeDot={{
-                stroke: '#3b82f6',
+                stroke: '#f97316',
                 strokeWidth: 3,
                 fill: '#ffffff',
                 r: 7,
@@ -497,15 +499,15 @@ export default function StatsPage() {
         </ResponsiveContainer>
       </ChartContainer>
     </CardContent>
-    <CardFooter className="flex-col items-start gap-2 text-sm border-t border-gray-200 dark:border-gray-800 bg-gray-50/5 dark:bg-gray-900/5">
+    <CardFooter className="flex-col items-start gap-2 text-sm border-t border-gray-300 dark:border-gray-900 bg-white/70 dark:bg-black">
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 animate-pulse" />
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            Real-time performance tracking
+          <div className="h-3 w-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-400 animate-pulse " />
+          <span className="text-2xl text-gray-800 dark:text-gray-200">
+            Real-time performance tracking 🔥
           </span>
         </div>
-        <div className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+        <div className="text-2xl text-gray-800 dark:text-zinc-300">
           Avg. {avgClicks} clicks per URL
         </div>
       </div>
