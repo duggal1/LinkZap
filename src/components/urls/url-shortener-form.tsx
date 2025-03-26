@@ -51,7 +51,14 @@ export function UrlShortenerForm() {
   });
 
   const onSubmit = async (data: UrlFormData) => {
-    setIsLoading(true);
+  if (!session?.user && shortUrl) {
+    toast.error("Pls login to get free 100 link shorter credit", {
+      duration: 5000,
+    });
+    router.push("/login");
+    return;
+  }
+  setIsLoading(true);
     setError(null);
     setShortUrl(null);
     setShortCode(null);
