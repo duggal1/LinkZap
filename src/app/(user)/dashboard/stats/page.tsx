@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {
@@ -28,7 +29,12 @@ import {
   Label,
   Pie,
   PieChart,
+  ResponsiveContainer,
   XAxis,
+  Area,
+  AreaChart,
+  ComposedChart,
+  Line,
 } from "recharts";
 
 interface Url {
@@ -89,11 +95,11 @@ export default function StatsPage() {
     }));
   }, [topUrls]);
 
-  // prepare data for the pie chart with numerc values
+  // prepare data for the pie chart with numeric values
   const pieChartData = useMemo(() => {
     return topUrls.map((url, index) => ({
       browser: url.shortCode,
-      vistors: url.clicks,
+      visitors: url.clicks,
       fill: `hsl(var(--chart-${index + 1}))`,
     }));
   }, [topUrls]);
@@ -143,7 +149,7 @@ export default function StatsPage() {
         <Card className="shadow-sm">
           <CardHeader className="pb-2">
             <CardTitle>Total URLs</CardTitle>
-            <CardDescription>Number of URLs you've created</CardDescription>
+            <CardDescription>Number of URLs you&apos;ve created</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">{userUrls.length}</p>
@@ -153,7 +159,7 @@ export default function StatsPage() {
         <Card className="shadow-sm">
           <CardHeader className="pb-2">
             <CardTitle>Total Clicks</CardTitle>
-            <CardDescription>Total clicks acroos all URLs</CardDescription>
+            <CardDescription>Total clicks across all URLs</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">{totalClicks}</p>
@@ -182,43 +188,78 @@ export default function StatsPage() {
               <TabsList className="mb-4">
                 <TabsTrigger value="bar">Bar Chart</TabsTrigger>
                 <TabsTrigger value="pie">Pie Chart</TabsTrigger>
+                <TabsTrigger value="combined">Combined Analysis</TabsTrigger>
               </TabsList>
               <TabsContent value="bar" className="min-h-[400px] mt-4">
                 <Card>
                   <CardHeader>
-                    <CardTitle>URL Perfomance</CardTitle>
-                    <CardDescription>
-                      Top 5 URLs with most clicks
-                    </CardDescription>
+                    <CardTitle>URL Performance</CardTitle>
+                    <CardDescription>Top 5 URLs with most clicks</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ChartContainer config={barChartConfig}>
-                      <BarChart accessibilityLayer data={barChartData}>
-                        <CartesianGrid vertical={false} />
-                        <XAxis
-                          dataKey="url"
-                          tickLine={false}
-                          tickMargin={10}
-                          axisLine={false}
-                        />
-                        <ChartTooltip
-                          cursor={false}
-                          content={
-                            <ChartTooltipContent
-                              indicator="dashed"
-                              labelFormatter={(label) => `URL: ${label}`}
-                            />
-                          }
-                        />
-                        <Bar dataKey={"clicks"} radius={4}>
-                          {barChartData.map((entry, index) => (
-                            <Cell
-                              key={`cell-${index}`}
-                              fill={`hsl(var(--chart-${index + 1}))`}
-                            />
-                          ))}
-                        </Bar>
-                      </BarChart>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={barChartData}>
+                          <defs>
+                            {barChartData.map((entry, index) => (
+                              <linearGradient
+                                key={`gradient-${index}`}
+                                id={`gradient-${index}`}
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1"
+                              >
+                                <stop
+                                  offset="0%"
+                                  stopColor={`hsl(var(--chart-${index + 1}))`}
+                                  stopOpacity={0.8}
+                                />
+                                <stop
+                                  offset="100%"
+                                  stopColor={`hsl(var(--chart-${index + 1}))`}
+                                  stopOpacity={0.3}
+                                />
+                              </linearGradient>
+                            ))}
+                          </defs>
+                          <CartesianGrid
+                            stroke="hsl(var(--border))"
+                            strokeDasharray="3 3"
+                            vertical={false}
+                          />
+                          <XAxis
+                            dataKey="url"
+                            tickLine={false}
+                            axisLine={false}
+                            dy={10}
+                            tick={{ fill: 'hsl(var(--foreground))' }}
+                          />
+                          <ChartTooltip
+                            cursor={{ fill: 'hsl(var(--muted))' }}
+                            content={
+                              <ChartTooltipContent
+                                indicator="line"
+                                labelFormatter={(label) => `URL: ${label}`}
+                              />
+                            }
+                          />
+                          <Bar
+                            dataKey="clicks"
+                            radius={[8, 8, 0, 0]}
+                            maxBarSize={60}
+                            animationDuration={2000}
+                            animationEasing="ease-in-out"
+                          >
+                            {barChartData.map((entry, index) => (
+                              <Cell
+                                key={`cell-${index}`}
+                                fill={`url(#gradient-${index})`}
+                              />
+                            ))}
+                          </Bar>
+                        </BarChart>
+                      </ResponsiveContainer>
                     </ChartContainer>
                   </CardContent>
                   <CardFooter className="flex-col items-start gap-2 text-sm">
@@ -231,7 +272,7 @@ export default function StatsPage() {
                         </>
                       ) : (
                         <>
-                          Coudl improve with only {5 - avgClicks} more clicks{" "}
+                          Could improve with only {5 - avgClicks} more clicks{" "}
                           <TrendingDown className="size-4 text-amber-500" />
                         </>
                       )}
@@ -245,7 +286,7 @@ export default function StatsPage() {
               <TabsContent value="pie" className="min-h-[400px] mt-4">
                 <Card className="flex flex-col">
                   <CardHeader className="items-center pb-0">
-                    <CardTitle>URL Clicks Distrubtion</CardTitle>
+                    <CardTitle>URL Clicks Distribution</CardTitle>
                     <CardDescription>
                       Top {topUrls.length} URLs with most clicks
                     </CardDescription>
@@ -255,53 +296,67 @@ export default function StatsPage() {
                       config={pieChartConfig}
                       className="mx-auto aspect-square max-h-[350px]"
                     >
-                      <PieChart>
-                        <ChartTooltip
-                          cursor={false}
-                          content={<ChartTooltipContent hideLabel />}
-                        />
-                        <Pie
-                          data={pieChartData}
-                          dataKey="vistors"
-                          nameKey="browser"
-                          innerRadius={60}
-                          strokeWidth={5}
-                        >
-                          <Label
-                            content={({ viewBox }) => {
-                              if (
-                                viewBox &&
-                                "cx" in viewBox &&
-                                "cy" in viewBox
-                              ) {
-                                return (
-                                  <text
-                                    x={viewBox.cx}
-                                    y={viewBox.cy}
-                                    textAnchor="middle"
-                                    dominantBaseline={"middle"}
-                                  >
-                                    <tspan
-                                      x={viewBox.cx}
-                                      y={viewBox.cy}
-                                      className="fill-foreground text-3xl font-bold"
+                      <ResponsiveContainer width="100%" height={350}>
+                        <PieChart>
+                          <ChartTooltip
+                            cursor={false}
+                            content={<ChartTooltipContent hideLabel />}
+                          />
+                          <Pie
+                            data={pieChartData}
+                            dataKey="visitors"
+                            nameKey="browser"
+                            innerRadius="60%"
+                            outerRadius="85%"
+                            strokeWidth={2}
+                            paddingAngle={2}
+                            animationBegin={0}
+                            animationDuration={1500}
+                            startAngle={90}
+                            endAngle={-270}
+                          >
+                            {pieChartData.map((entry, index) => (
+                              <Cell
+                                key={`cell-${index}`}
+                                fill={entry.fill}
+                                stroke="hsl(var(--background))"
+                              />
+                            ))}
+                            <Label
+                              content={({ viewBox }) => {
+                                // Safe type assertion for viewBox
+                                const safeViewBox = viewBox as { cx?: number; cy?: number };
+                                if (safeViewBox?.cx !== undefined && safeViewBox?.cy !== undefined) {
+                                  return (
+                                    <text
+                                      x={safeViewBox.cx}
+                                      y={safeViewBox.cy}
+                                      textAnchor="middle"
+                                      dominantBaseline="middle"
                                     >
-                                      {totalClicks.toLocaleString()}
-                                    </tspan>
-                                    <tspan
-                                      x={viewBox.cx}
-                                      y={(viewBox.cy || 20) + 20}
-                                      className="fill-muted-foreground text-xs mb-2"
-                                    >
-                                      Total Clicks
-                                    </tspan>
-                                  </text>
-                                );
-                              }
-                            }}
-                          ></Label>
-                        </Pie>
-                      </PieChart>
+                                      <tspan
+                                        x={safeViewBox.cx}
+                                        y={safeViewBox.cy - 10}
+                                        className="fill-foreground text-3xl font-bold"
+                                      >
+                                        {totalClicks.toLocaleString()}
+                                      </tspan>
+                                      <tspan
+                                        x={safeViewBox.cx}
+                                        y={safeViewBox.cy + 15}
+                                        className="fill-muted-foreground text-sm"
+                                      >
+                                        Total Clicks
+                                      </tspan>
+                                    </text>
+                                  );
+                                }
+                                return null;
+                              }}
+                            />
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
                     </ChartContainer>
                   </CardContent>
                   <CardFooter className="flex-col gap-2 text-sm">
@@ -326,6 +381,92 @@ export default function StatsPage() {
                     </div>
                     <div className="leading-none text-muted-foreground">
                       Showing click count for your top {topUrls.length} URLs
+                    </div>
+                  </CardFooter>
+                </Card>
+              </TabsContent>
+              <TabsContent value="combined" className="min-h-[400px] mt-4">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Advanced URL Analytics</CardTitle>
+                    <CardDescription>Combined performance metrics</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ChartContainer config={barChartConfig}>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <ComposedChart data={barChartData}>
+                          <defs>
+                            <linearGradient id="colorClicks" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.8}/>
+                              <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.1}/>
+                            </linearGradient>
+                            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity={0.4}/>
+                              <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity={0.1}/>
+                            </linearGradient>
+                          </defs>
+                          <CartesianGrid 
+                            strokeDasharray="3 3"
+                            vertical={false}
+                            stroke="hsl(var(--border))"
+                            opacity={0.3}
+                          />
+                          <XAxis 
+                            dataKey="url"
+                            tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }}
+                            axisLine={false}
+                            tickLine={false}
+                          />
+                          <ChartTooltip
+                            content={
+                              <ChartTooltipContent
+                                indicator="line"
+                                labelFormatter={(label) => `URL: ${label}`}
+                              />
+                            }
+                          />
+                          <Bar 
+                            dataKey="clicks"
+                            fill="url(#colorClicks)"
+                            radius={[6, 6, 0, 0]}
+                            maxBarSize={50}
+                          />
+                          <Area
+                            type="monotone"
+                            dataKey="clicks"
+                            stroke="hsl(var(--secondary))"
+                            strokeWidth={2}
+                            fillOpacity={1}
+                            fill="url(#areaGradient)"
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="clicks"
+                            stroke="hsl(var(--primary))"
+                            strokeWidth={2}
+                            dot={{
+                              stroke: 'hsl(var(--primary))',
+                              strokeWidth: 2,
+                              fill: 'hsl(var(--background))',
+                              r: 4
+                            }}
+                            activeDot={{
+                              stroke: 'hsl(var(--primary))',
+                              strokeWidth: 2,
+                              fill: 'hsl(var(--background))',
+                              r: 6
+                            }}
+                          />
+                        </ComposedChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </CardContent>
+                  <CardFooter className="flex-col items-start gap-2 text-sm">
+                    <div className="flex gap-2 font-medium leading-none">
+                      Total Impact: {totalClicks} clicks across {userUrls.length} URLs
+                    </div>
+                    <div className="leading-none text-muted-foreground">
+                      Comprehensive view of your URL performance metrics
                     </div>
                   </CardFooter>
                 </Card>
