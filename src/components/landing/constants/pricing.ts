@@ -98,6 +98,7 @@
 // ];
 
 // export const WORKSPACE_LIMIT = 2;
+
 export const PLANS = [
     {
         name: "Free",

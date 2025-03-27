@@ -8,6 +8,7 @@ import { useAnimate } from "framer-motion";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import { HighlighterItem, HighlightGroup, Particles } from "@/components/ui/highlighter";
+import AnimationContainer from "../components/global/animation-container";
 
 export function Connect() {
   const [scope, animate] = useAnimate();
@@ -53,6 +54,8 @@ export function Connect() {
 
   return (
     <section className="relative mx-auto mb-20 mt-6 max-w-5xl">
+
+<AnimationContainer delay={0.4}>
       <HighlightGroup className="group h-full">
         <div
           className="group/item h-full md:col-span-6 lg:col-span-12"
@@ -162,8 +165,11 @@ export function Connect() {
               </div>
             </div>
           </HighlighterItem>
+    
+    
         </div>
       </HighlightGroup>
+      </AnimationContainer>
     </section>
   );
 }

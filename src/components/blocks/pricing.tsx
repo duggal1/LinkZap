@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-// import { useMediaQuery } from "./; // Ensure this hook is defined elsewhere
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Check, Star } from "lucide-react";
@@ -74,18 +72,18 @@ export function Pricing({
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center overflow-hidden">
       <div className="container py-20 max-w-screen-xl mx-auto">
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <div className="text-center space-y-6 sm:space-y-8">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             {title}
           </h2>
-          <p className="text-muted-foreground text-lg whitespace-pre-line">
+          <p className="text-muted-foreground text-base sm:text-lg whitespace-pre-line">
             {description}
           </p>
         </div>
 
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-16 sm:mb-20">
           <label className="relative inline-flex items-center cursor-pointer">
             <Label>
               <Switch

@@ -19,6 +19,9 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 import { PricingBasic } from "@/components/landing/New-Pricing/pricings";
 import { Connect } from "@/components/landing/Cta/cta";
 
+// import { DefaultDemo } from "@/components/ui/faq-chat-accordion";
+import { Faqs } from "@/components/landing/Faqs/faq-section";
+
 const HomePage = async () => {
 
    
@@ -201,12 +204,16 @@ const HomePage = async () => {
                
 
 
-
+                <AnimationContainer delay={0.4}>
          <Connect/>
-
+         </AnimationContainer>
+         <AnimationContainer delay={0.4}>
+         <Faqs/>
+         </AnimationContainer>
            
-
+         
         </div>
+  
     )
 };
 
