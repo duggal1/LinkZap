@@ -1,109 +1,95 @@
-# LinkZap 🔗✂️
+# LinkZap <span>🔗✂️</span>
 
-<img width="1144" alt="Screenshot 2025-03-28 at 00 21 06" src="https://github.com/user-attachments/assets/e6494da2-1b59-4389-b20a-02086fd71f70" />
+<div align="center">
+  <img src="https://img.shields.io/github/stars/duggal1/linkzap?style=social" alt="GitHub Stars" />
+  <img src="https://img.shields.io/github/license/duggal1/linkzap" alt="GitHub License" />
+  <img src="https://img.shields.io/badge/version-1.0.0-blue" alt="Version" />
+</div>
 
-## Quick Link Shortening Made Simple
+## 🚀 Revolutionizing Link Management
 
-![GitHub stars](https://img.shields.io/github/stars/duggal1/linkzap?style=social)
-![GitHub License](https://img.shields.io/github/license/duggal1/linkzap)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+LinkZap is not just another link shortener—it's an intelligent SaaS platform that transforms how you share, track, and optimize your digital links.
 
-### 🚀 Project Overview
+### ✨ Key Features
 
-LinkZap is a cutting-edge link shortening SaaS solution built with the latest web technologies, transforming long URLs into smart, shareable links.
+| Feature | Description |
+|---------|-------------|
+| 🌐 **Instant Shortening** | Convert complex URLs into crisp, memorable links |
+| 🧠 **AI-Powered Insights** | Intelligent link analysis and smart recommendations |
+| 🎨 **Custom Aliases** | Create personalized short links that reflect your brand |
+| 📊 **Advanced Analytics** | Comprehensive performance tracking and insights |
+| 🔒 **Enterprise Security** | Robust authentication and data protection |
+| 💻 **Multi-Platform** | Seamless experience across web and mobile |
 
-### ✨ Features
+### 🛠 Technology Ecosystem
 
-- **Instant Link Shortening**: Convert long URLs to compact, memorable links
-- **AI-Powered Link Insights**: Intelligent link analysis and recommendations
-- **Custom Link Aliases**: Create personalized short links
-- **Advanced Analytics Dashboard**: Comprehensive link performance tracking
-- **Secure & Private**: Enterprise-grade security and authentication
-- **Multi-Platform Support**: Seamless experience across web and mobile
-
-### 🛠 Tech Stack
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=nextjs,typescript,tailwind,bun,postgresql,vercel" alt="Tech Stack" />
+</div>
 
 - **Framework**: Next.js 15.3
+- **Runtime**: Bun
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Backend**: Node.js
-- **Authentication**: Auth.js
-- **Background Jobs**: Inngest
-- **AI Integration**: 
-  - Google Gemini AI
-  - React 19
-- **Database**: Postgress
+- **Database**: PostgreSQL
+- **AI Integration**: Google Gemini
 - **Deployment**: Vercel
 
-### 🚦 Getting Started
-
-#### Prerequisites
-
-- Node.js (v20+)
-- npm or Yarn
-- MongoDB Account
-- Google Cloud Account (for Gemini AI)
-- Vercel Account
-
-#### Installation
+### 🚦 Quick Start
 
 ```bash
+# Install Bun (if not already installed)
+curl -fsSL https://bun.sh/install | bash
+
 # Clone the repository
 git clone https://github.com/duggal1/linkzap.git
 
-# Navigate to project directory
+# Setup in seconds
 cd linkzap
-
-# Install dependencies
-npm install
-
-# Set up environment variables
+bun install
 cp .env.example .env
-
-# Run development server
-npm run dev
+bun dev
 ```
 
-### 🔐 Environment Configuration
+### 🔐 Configuration Essentials
 
-Create a `.env` file with the following keys:
-- `MONGODB_URI`
+Create your `.env` with:
+- `POSTGRES_URL`
 - `GEMINI_API_KEY`
 - `NEXTAUTH_SECRET`
 - `INNGEST_EVENT_KEY`
 
-### 📦 Quick Deploy
+### 📦 Database Setup
+
+```bash
+# Initialize PostgreSQL database
+bun run db:migrate
+bun run db:seed
+```
+
+### 🤖 AI-Powered Magic
+
+- 🔮 Intelligent link preview generation
+- 🏷️ Automated link categorization
+- 🚀 Smart recommendation engine
+- 📈 Predictive analytics
+
+### 🚀 One-Click Deployment
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/duggal1/linkzap)
 
-### 🤝 Contributing
+### 🤝 Contribute & Collaborate
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) before getting started.
+Passionate about open source? [Read our Contributing Guidelines](CONTRIBUTING.md) and join our community!
 
-### 🧠 AI-Powered Capabilities
+### 📄 License
 
-- Intelligent link preview generation
-- Automated link categorization
-- Smart recommendation engine
-- Predictive analytics
-
-### 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### 👨‍💻 Author
-
-**Duggal** 
-- GitHub: [@duggal1](https://github.com/duggal1)
-
-
-### 🌟 Support
-
-If you find this project helpful, please consider:
-- Giving a ⭐ on GitHub
-- Sharing with your network
-- Contributing to the project
+MIT Licensed. See [LICENSE](LICENSE) for full details.
 
 ---
 
-**Built with ❤️ and Latest Web Technologies by Harshit Duggal**
+**Crafted with ❤️ by [Harshit Duggal](https://github.com/duggal1/linkzap)**
+
+<div align="center">
+  <strong>Transform Links. Amplify Insights.</strong>
+</div>
