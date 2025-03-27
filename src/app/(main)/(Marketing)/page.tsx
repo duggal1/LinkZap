@@ -72,6 +72,7 @@ const HomePage = async () => {
                                 height={1200}
                                 quality={100}
                                 className="rounded-md lg:rounded-xl bg-foreground/10 ring-1 ring-border"
+                                priority
                             />
                             <div className="absolute -bottom-4 inset-x-0 w-full h-1/2 bg-gradient-to-t from-background z-40"></div>
                             <div className="absolute bottom-0 md:-bottom-8 inset-x-0 w-full h-1/4 bg-gradient-to-t from-background z-50"></div>
