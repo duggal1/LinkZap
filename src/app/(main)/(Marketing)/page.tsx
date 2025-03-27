@@ -90,12 +90,14 @@ const HomePage = async () => {
             {/* Companies Section */}
             <MaxWidthWrapper>
                 <AnimationContainer delay={0.4}>
-                    <div className="py-14 -mt-40">
+                   <h1>
+                    
+                   </h1>
                        
                             <Companies/>
                              
                   
-                            </div>
+                
                    
                     </AnimationContainer>
                     </MaxWidthWrapper>

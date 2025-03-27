@@ -76,13 +76,12 @@ export function Companies() {
 //   const { theme } = useTheme()
   return (
     <div className="h-screen w-full overflow-hidden">
-    
+   
 
-        <div className="relative mt-24 h-[100px] w-full">
+        <div className="relative  mt-8 h-[100px] w-full">
+      
         <div className="mx-auto px-4 md:px-8">
-                            <h1 className="text-center text-4xl  font-bold font-heading text-neutral-100 uppercase italic">
-                                Empowering Industry Leaders
-                            </h1>
+                            
                         </div>
           <InfiniteSlider 
             className='flex h-full w-full items-center' 
