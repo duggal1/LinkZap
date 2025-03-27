@@ -106,4 +106,4 @@ If you find this project helpful, please consider:
 
 ---
 
-**Built with ❤️ and Latest Web Technologies by H Duggal**
+**Built with ❤️ and Latest Web Technologies by Harshit Duggal**
