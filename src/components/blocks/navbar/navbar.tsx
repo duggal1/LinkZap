@@ -173,7 +173,7 @@ const Navbar = () => {
                             ) : (
                                 <div className="flex items-center gap-x-4">
                                     
-                                    <Link href="/register" className={buttonVariants({ size: "sm", className: "hover:bg-gradient-to-bl hover:from-orange-600 hover:to-lime-500 hover:text-white" })}>
+                                    <Link href="/login" className={buttonVariants({ size: "sm", className: "hover:bg-gradient-to-bl hover:from-orange-600 hover:to-orange-800 hover:text-white" })}>
                                         Get Started
                                     </Link>
                                 </div>

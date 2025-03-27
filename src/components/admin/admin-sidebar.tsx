@@ -40,8 +40,8 @@ export function AdminSidebar() {
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   isActive(item)
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:bg-muted"
+                    ? "bg-gradient-to-l from-orange-500 to-orange-700 text-white/90"
+                    : "hover:bg-orange-100 hover:text-black"
                 )}
               >
                 {item.icon}
