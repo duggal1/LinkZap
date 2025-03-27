@@ -1,5 +1,3 @@
-
-
 import FeaturesGrid from "@/components/landing/features-4";
 import { AnimationContainer, MaxWidthWrapper} from "@/components/landing/components";
 
@@ -90,10 +88,13 @@ const HomePage = async () => {
             {/* Companies Section */}
             <MaxWidthWrapper>
                 <AnimationContainer delay={0.4}>
-                   <h1>
-                    
+                  
+                   <h1 className="text-6xl font-bold text-center text-white tracking-tight">
+                       Empowering Industry Leaders
                    </h1>
-                       
+                   <p className="text-xl tracking-normal font-medium leading-none text-center text-neutral-400/90 mt-4">
+                       Leading companies trust us to optimize their link management<br/> with advanced analytics and seamless integration.
+                   </p>
                             <Companies/>
                              
                   
@@ -206,11 +207,13 @@ const HomePage = async () => {
                
 
 
-                <AnimationContainer delay={0.4}>
-         <Connect/>
-         </AnimationContainer>
          <AnimationContainer delay={0.4}>
          <Faqs/>
+         </AnimationContainer>
+
+
+         <AnimationContainer delay={0.4}>
+         <Connect/>
          </AnimationContainer>
            
          

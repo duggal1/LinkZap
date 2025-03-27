@@ -69,8 +69,8 @@ export default function Features() {
           <div className="flex justify-center mx-auto mb-4">
           <MagicBadge title="HOW IT WORKS" />
           </div>
-          <h2 className="bg-clip-text bg-gradient-to-r from-primary to-primary/80 font-medium text-transparent text-4xl lg:text-5xl text-balance leading-relaxed">Enterprise Link Management for the AI Era</h2>
-          <p className="font-medium text-accent-foreground/80">Transform your link infrastructure with LinkZap&apos;s AI-powered platform, trusted by Fortune 500 companies to manage over 1 billion clicks monthly.</p>
+          <h2 className="bg-clip-text bg-gradient-to-r from-primary to-primary/80 font-bold text-transparent text-4xl lg:text-5xl text-balance leading-tight">Enterprise Link Management for the AI Era</h2>
+          <p className="font-medium text-zinc-300/80 ">Transform your link infrastructure with LinkZap&apos;s AI-powered platform, trusted by Fortune 500 companies to manage over 1 billion clicks monthly.</p>
         </div>
         </AnimationContainer>
         <AnimationContainer delay={0.4}>
