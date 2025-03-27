@@ -95,7 +95,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Duggal** 
 - GitHub: [@duggal1](https://github.com/duggal1)
-- Personal Website: [Your Personal Site]
+
 
 ### 🌟 Support
 
@@ -106,4 +106,4 @@ If you find this project helpful, please consider:
 
 ---
 
-**Built with ❤️ and Latest Web Technologies by Duggalji**
+**Built with ❤️ and Latest Web Technologies by H Duggal**
