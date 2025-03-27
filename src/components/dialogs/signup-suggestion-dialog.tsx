@@ -43,7 +43,7 @@ export function SignupSuggestionDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-black text-white border border-orange-500 sm:max-w-md rounded-xl p-6 shadow-lg shadow-black/50">
+      <DialogContent className="bg-black text-white border border-orange-500/30 sm:max-w-md rounded-xl p-6 shadow-lg shadow-black/50">
         <DialogHeader>
           <DialogTitle className="text-2xl font-semibold tracking-tight">
             URL Shortened

@@ -23,6 +23,7 @@ import { QRCodeModal } from "../modals/qr-code-modal";
 import { boolean } from "drizzle-orm/gel-core";
 import { toast } from "sonner";
 import { SignupSuggestionDialog } from "../dialogs/signup-suggestion-dialog";
+import Confetti from "react-confetti";
 
 export function UrlShortenerForm() {
   const { data: session } = useSession();
@@ -41,6 +42,7 @@ export function UrlShortenerForm() {
     reason: string | null;
     message: string | undefined;
   } | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const form = useForm<UrlFormData>({
     resolver: zodResolver(urlSchema),
@@ -51,14 +53,14 @@ export function UrlShortenerForm() {
   });
 
   const onSubmit = async (data: UrlFormData) => {
-  if (!session?.user && shortUrl) {
-    toast.error("Pls login to get free 100 link shorter credit", {
-      duration: 5000,
-    });
-    router.push("/login");
-    return;
-  }
-  setIsLoading(true);
+    if (!session?.user && shortUrl) {
+      toast.error("Pls login to get free 100 link shorter credit", {
+        duration: 5000,
+      });
+      router.push("/login");
+      return;
+    }
+    setIsLoading(true);
     setError(null);
     setShortUrl(null);
     setShortCode(null);
@@ -117,6 +119,8 @@ export function UrlShortenerForm() {
 
     try {
       await navigator.clipboard.writeText(shortUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (error) {
       console.error(error);
     }
@@ -129,6 +133,13 @@ export function UrlShortenerForm() {
 
   return (
     <>
+      {copied && (
+        <Confetti
+          numberOfPieces={150}
+          recycle={false}
+          colors={["#FF8C00", "#FFA500", "#FF4500"]}
+        />
+      )}
       <div className="w-full max-w-2xl mx-auto">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -215,11 +226,11 @@ export function UrlShortenerForm() {
                     <Button
                       type="button"
                       variant={"outline"}
-                      className="flex-shrink-0"
+                      className="flex-shrink-0 bg-orange-500 hover:bg-orange-600 text-white"
                       onClick={copyToClipboard}
                     >
                       <Copy className="size-4 mr-1" />
-                      Copy
+                      {copied ? "Copied!" : "Copy"}
                     </Button>
                     <Button
                       type="button"
