@@ -1,4 +1,5 @@
 # LinkZap <span>🔗✂️</span>
+<img width="1144" alt="Screenshot 2025-03-28 at 00 21 06" src="https://github.com/user-attachments/assets/acf3a107-bf5b-4b23-8c74-9a9ee8fabf24" />
 
 <div align="center">
   <img src="https://img.shields.io/github/stars/duggal1/linkzap?style=social" alt="GitHub Stars" />
