@@ -2,6 +2,9 @@
 import { NextResponse } from "next/server";
 import { auth } from "./server/auth";
 
+
+//wip
+
 export default auth(async function middleware(req) {
   const session = req.auth; // JWT session data from auth middleware
   const isAuth = !!session?.user; // Check if user is authenticated
