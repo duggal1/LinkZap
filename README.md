@@ -1,33 +1,109 @@
+# LinkZap 🔗✂️
 
-First, run the development server:
+<img width="1144" alt="Screenshot 2025-03-28 at 00 21 06" src="https://github.com/user-attachments/assets/e6494da2-1b59-4389-b20a-02086fd71f70" />
+
+## Quick Link Shortening Made Simple
+
+![GitHub stars](https://img.shields.io/github/stars/duggal1/linkzap?style=social)
+![GitHub License](https://img.shields.io/github/license/duggal1/linkzap)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+
+### 🚀 Project Overview
+
+LinkZap is a cutting-edge link shortening SaaS solution built with the latest web technologies, transforming long URLs into smart, shareable links.
+
+### ✨ Features
+
+- **Instant Link Shortening**: Convert long URLs to compact, memorable links
+- **AI-Powered Link Insights**: Intelligent link analysis and recommendations
+- **Custom Link Aliases**: Create personalized short links
+- **Advanced Analytics Dashboard**: Comprehensive link performance tracking
+- **Secure & Private**: Enterprise-grade security and authentication
+- **Multi-Platform Support**: Seamless experience across web and mobile
+
+### 🛠 Tech Stack
+
+- **Framework**: Next.js 15.3
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Backend**: Node.js
+- **Authentication**: Auth.js
+- **Background Jobs**: Inngest
+- **AI Integration**: 
+  - Google Gemini AI
+  - React 19
+- **Database**: MongoDB
+- **Deployment**: Vercel
+
+### 🚦 Getting Started
+
+#### Prerequisites
+
+- Node.js (v20+)
+- npm or Yarn
+- MongoDB Account
+- Google Cloud Account (for Gemini AI)
+- Vercel Account
+
+#### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/duggal1/linkzap.git
+
+# Navigate to project directory
+cd linkzap
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🔐 Environment Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env` file with the following keys:
+- `MONGODB_URI`
+- `GEMINI_API_KEY`
+- `NEXTAUTH_SECRET`
+- `INNGEST_EVENT_KEY`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 📦 Quick Deploy
 
-## Learn More
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/duggal1/linkzap)
 
-To learn more about Next.js, take a look at the following resources:
+### 🤝 Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) before getting started.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🧠 AI-Powered Capabilities
 
-## Deploy on Vercel
+- Intelligent link preview generation
+- Automated link categorization
+- Smart recommendation engine
+- Predictive analytics
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### 👨‍💻 Author
+
+**Duggal** 
+- GitHub: [@duggal1](https://github.com/duggal1)
+- Personal Website: [Your Personal Site]
+
+### 🌟 Support
+
+If you find this project helpful, please consider:
+- Giving a ⭐ on GitHub
+- Sharing with your network
+- Contributing to the project
+
+---
+
+**Built with ❤️ and Latest Web Technologies by Duggalji**
