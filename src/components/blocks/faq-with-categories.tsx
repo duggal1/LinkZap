@@ -40,6 +40,7 @@ const FaqSectionWithCategories = React.forwardRef<HTMLElement, FaqSectionWithCat
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             {/* Header */}
+            <AnimationContainer delay={0.5}>
             <div className="text-center space-y-4 mb-12">
               <h2 className="text-4xl font-bold text-foreground">
                 {title}
@@ -50,6 +51,7 @@ const FaqSectionWithCategories = React.forwardRef<HTMLElement, FaqSectionWithCat
                 </p>
               )}
             </div>
+            </AnimationContainer>
 
             {/* FAQ Items */}
             <Accordion type="single" collapsible className="space-y-4">
@@ -94,6 +96,7 @@ const FaqSectionWithCategories = React.forwardRef<HTMLElement, FaqSectionWithCat
             </Accordion>
 
             {/* Contact Section */}
+            <AnimationContainer delay={0.5}>
             {contactInfo && (
               <div className="mt-12 text-center">
                 <p className=" text-white/80 text-xl tracking-tight  mb-4">
@@ -104,6 +107,7 @@ const FaqSectionWithCategories = React.forwardRef<HTMLElement, FaqSectionWithCat
                     {contactInfo.description}
                   </p>
                 )}
+              
           <Button
   size="sm"
   onClick={contactInfo.onContact}
@@ -114,6 +118,7 @@ const FaqSectionWithCategories = React.forwardRef<HTMLElement, FaqSectionWithCat
 </Button>
               </div>
             )}
+              </AnimationContainer>
           </div>
         </div>
       </section>

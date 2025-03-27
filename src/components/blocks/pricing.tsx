@@ -72,7 +72,7 @@ export function Pricing({
   };
 
   return (
-    <div className="flex justify-center overflow-hidden">
+    <div className="flex justify-center">
       <div className="container py-20 max-w-screen-xl mx-auto">
         <div className="text-center space-y-6 sm:space-y-8">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
@@ -103,30 +103,29 @@ export function Pricing({
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              initial={{ y: 50, opacity: 1 }}
+              initial={{ y: 50, opacity: 0 }}
               whileInView={
                 isDesktop
                   ? {
                       y: plan.isPopular ? -20 : 0,
                       opacity: 1,
-                      scale: index === 1 ? 1.05 : 1.0,
+                      scale: plan.isPopular ? 1.05 : 1.0, // Adjusted for clarity
                     }
-                  : {}
+                  : { y: 0, opacity: 1 } // No animation on mobile to avoid scroll issues
               }
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }} // Adjusted margin for smoother trigger
               transition={{
                 duration: 1.6,
                 type: "spring",
                 stiffness: 100,
                 damping: 30,
-                delay: 0.4,
+                delay: 0.4 * index, // Staggered delay for each card
                 opacity: { duration: 0.5 },
               }}
               className={cn(
-                `rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative shadow-lg hover:shadow-xl transition-shadow duration-300`,
+                "rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative shadow-lg hover:shadow-xl transition-shadow duration-300",
                 plan.isPopular ? "border-orange-500" : "border-border",
-                "flex flex-col",
-                !plan.isPopular && "mt-5"
+                "flex flex-col"
               )}
             >
               {plan.isPopular && (
