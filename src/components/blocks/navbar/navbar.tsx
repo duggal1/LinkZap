@@ -70,6 +70,7 @@ const Navbar = () => {
                                 alt="Linkzap"
                                 width={40}
                                 height={40}
+                                priority
                             />
                             <span className="text-lg font-bold font-heading !leading-none">
                                 LINKZAP
