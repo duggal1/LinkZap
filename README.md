@@ -32,7 +32,7 @@ LinkZap is a cutting-edge link shortening SaaS solution built with the latest we
 - **AI Integration**: 
   - Google Gemini AI
   - React 19
-- **Database**: MongoDB
+- **Database**: Postgress
 - **Deployment**: Vercel
 
 ### 🚦 Getting Started
