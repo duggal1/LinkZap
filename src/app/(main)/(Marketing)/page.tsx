@@ -17,6 +17,7 @@ import { AnimatedGradientTexts } from "@/components/landing/header/cta";
 import TryLinkzaps from "@/components/landing/urls/try-linkzap";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { PricingBasic } from "@/components/landing/New-Pricing/pricings";
+import { Connect } from "@/components/landing/Cta/cta";
 
 const HomePage = async () => {
 
@@ -195,9 +196,13 @@ const HomePage = async () => {
                             Here&apos;s what some of our users have to say about Linkify.
                         </p>
                     </div>
+                    <VerticalTestimonialScroll/>
                 </AnimationContainer>
-                <VerticalTestimonialScroll/>
-         
+               
+
+
+
+         <Connect/>
 
            
 
