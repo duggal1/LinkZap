@@ -27,7 +27,7 @@ export function SignupSuggestionDialog({
 
   const handleSignup = () => {
     onOpenChange(false);
-    router.push("/register");
+    router.push("/login");
   };
 
   const handleSignin = () => {
