@@ -98,14 +98,14 @@ function TestimonialSlider() {
       text: "Short links with LinkZap have boosted our click-through rates by 30%. Amazing tool!",
       name: "Priya Patel",
       title: "Digital Strategist, Canva",
-      img: "https://images.unsplash.com/photo-1517841902196-6c8e86c88b28?q=80&w=2940&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       logo: "https://freepnglogo.com/images/all_img/1691829322canva-app-logo-png.png",
     },
     {
       text: "LinkZap makes URL management effortless. A must for any SaaS business!",
       name: "Liam Brooks",
       title: "CEO, Zapier",
-      img: "https://images.unsplash.com/photo-1522556189639-78147b59a4b6?q=80&w=2940&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1520341280432-4749d4d7bcf9?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrVwOzVey6XcMevohRDman3xgDFw91v8qZfw&s",
     },
     {
